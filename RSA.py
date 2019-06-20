@@ -50,7 +50,7 @@ class RSA(object):
         self.N = self.p * self.q
         print("N = ", self.N)
 
-        self.t = self.totient(self.N)
+        self.t = self.totient()
         for num in range(2, self.t):
             if math.gcd(num, self.t) == 1:
                 self.e = num
@@ -125,7 +125,7 @@ class RSA(object):
     """
 
     # function to calculate totient for keyGen method
-    def totient(self, value):
+    def totient(self):
         return int((self.p - 1) * (self.q - 1))
 
     # Helper function used for extendedEuclideanAlgorithm
