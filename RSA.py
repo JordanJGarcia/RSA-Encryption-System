@@ -148,7 +148,9 @@ class RSA(object):
         a, b, c, d = 1, a_values.pop(), f_values.pop() * -1, b_values.pop()
 
         # popping r_value for correct comparison
-        r_values.pop()
+        if len(r_values) > 1:
+            r_values.pop()
+
         r = r_values.pop()
 
         while r != self.e:
@@ -167,10 +169,10 @@ class RSA(object):
         return a
 
     def isPrime(self, value):
-        if value == 0:
+        if value == 0 or value == 1:
             return False
 
-        if value == 1 or value == 2 or value == 3:
+        if value == 2 or value == 3:
             return True
 
         if value % 2 == 0 or value % 3 == 0:
